@@ -9,9 +9,10 @@ import lt.codeacademy.javau5.securitysql.repositories.UserRepository;
 import lt.codeacademy.javau5.securitysql.entities.UserData;
 import lt.codeacademy.javau5.securitysql.entities.UserEntity;
 import lt.codeacademy.javau5.securitysql.exceptions.UserAlreadyExistException;
+import lt.codeacademy.javau5.securitysql.interfaces.UserService;
 
 @Service("userService")
-public class DefaultUserService{
+public class DefaultUserService implements UserService{
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -19,6 +20,7 @@ public class DefaultUserService{
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
+	@Override
 	public void register(UserData user) throws UserAlreadyExistException {
 
         //Let's check if user already registered with us
